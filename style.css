@@ -67,3 +67,61 @@ footer {
 h2 {
   color: #901ed6;
 }
+
+/* quiz styles */
+.quiz-box {
+    background: white;
+    max-width: 700px;
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.25);
+}
+
+.question {
+    margin-bottom: 20px;
+}
+
+.question input[type="text"] {
+    width: 100%;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* buttons */
+button {
+    background: #278dd6;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+button:hover {
+    background: #1b6aa3;
+}
+
+/* quiz results */
+.correct {
+    color: green;
+    font-weight: bold;
+}
+
+.wrong {
+    color: red;
+    font-weight: bold;
+}
+
+.pass {
+    color: green;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.fail {
+    color: red;
+    font-size: 18px;
+    font-weight: bold;
+}
