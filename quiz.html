@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Pop Quiz</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+<h1>Pop Quiz</h1>
+
+<!-- Navigation menu -->
+<nav>
+<ul class="menu">
+<li><a href="index.html">Home</a></li>
+<li><a href="topic1.html">History</a></li>
+<li><a href="topic2.html">Current Trends</a></li>
+<li><a href="key-concepts.html">Key Concepts</a></li>
+<li><a href="quiz.html">Quiz</a></li>
+<li><a href="references.html">References</a></li>
+<li><a href="about.html">About</a></li>
+</ul>
+</nav>
+</header>
+
+<!-- page content -->
+<main class="content">
+<section>
+<h2>Surprise!</h2>
+<p>
+In order to better gauge your understanding of the content, I have deisgned a quick <b>pop quiz</b> to test you on how well you have been paying attention. Don’t worry, the quiz is just for fun (and won’t count towards your final grade in the course), so no cheating! The quiz is five questions long, and shouldn’t take more than a few minutes to complete.
+</p>
+</section>
+
+<!-- quiz -->
+<section class="quiz-box">
+    <form id="quiz_form">
+        <!-- set questions -->
+        <div class="question">
+            <p>Question 1. What is the practice of hosting websites on the internet which allow users to access requested information or services called?</p>
+            <input type="text" name="question_1">
+        </div>
+        <div class="question">
+            <p>Question 2. Who created the first prototype of the World Wide Web?</p>
+            <label><input type="radio" name="question_2" value="sir"> Sir Tim Berners-Lee</label><br>
+            <label><input type="radio" name="question_2" value="alan"> Alan Turing</label><br>
+            <label><input type="radio" name="question_2" value="vint"> Vint Cerf</label>
+        </div>
+        <div class="question">
+            <p>Question 3. When was the first web server outside of Europe installed?</p>
+            <label><input type="radio" name="question_3" value="a92"> April of 1992</label><br>
+            <label><input type="radio" name="question_3" value="m93"> May of 1993</label><br>
+            <label><input type="radio" name="question_3" value="d91"> December of 1991</label>
+        </div>
+        <div class="question">
+            <p>Question 4. What protocol does HTML/3 run on?</p>
+            <label><input type="radio" name="question_4" value="ilp"> Individual Location Protocol</label><br>
+            <label><input type="radio" name="question_4" value="udp"> User Datagram Protocol</label><br>
+            <label><input type="radio" name="question_4" value="fvp"> Flexible Vector Protocol</label>
+        </div>
+        <div class="question">
+            <p>Question 5. Which of the following options are benefits of AI implementation into web hosting?</p>
+            <label><input type="checkbox" name="question_5" value="scan"> Greater efficiency at scanning systems</label><br>
+            <label><input type="checkbox" name="question_5" value="strain"> Produce additional electrical strain</label><br>
+            <label><input type="checkbox" name="question_5" value="temp"> Better temperature management</label><br>
+            <label><input type="checkbox" name="question_5" value="funds"> Use company funds</label>
+        </div>
+        <button type="button" onclick="gradeQuiz()">Submit</button>
+        <button type="reset" onclick="resetResults()">Reset</button>
+    </form>
+    <div id="results"></div>
+</section>
+</main>
+<footer>
+<p>This website is a student project. You can find more information <a href="https://ksuweb.github.io/IT3203/">here</a>.</p>
+<p>&copy; 2025 Jack Rivers</p>
+</footer>
+
+<!-- script for the quiz -->
+<script>
+function gradeQuiz() {
+    /* set total score to 0 and clear everything */
+    let total_score = 0;
+    const results = document.getElementById("results");
+    results.innerHTML = "";
+
+    /* set correct answers */
+    const correct = {
+        question_1: "web hosting",
+        question_2: "sir",
+        question_3: "d91",
+        question_4: "udp",
+        question_5: ["scan", "temp"]
+    };
+    
+    /* collect answers from user */
+    const f = document.getElementById("quiz_form");
+    const answer_1 = f.question_1.value.trim().toLowerCase();
+    const answer_2 = f.question_2.value;
+    const answer_3 = f.question_3.value;
+    const answer_4 = f.question_4.value;
+    /* for question 5, make answer into an array */
+    const answer_5 = Array.from(f.question_5).filter(i => i.checked).map(i => i.value);
+    
+    /* compare user answers to correct answers */
+    const question_1_correct = answer_1 === correct.question_1.toLowerCase();
+    const question_2_correct = answer_2 === correct.question_2;
+    const question_3_correct = answer_3 === correct.question_3;
+    const question_4_correct = answer_4 === correct.question_4;
+    /* make sure question 5 order answer doesn't matter */
+    const question_5_correct = JSON.stringify(answer_5) === JSON.stringify(correct.question_5.sort());
+
+    /* set/calculate total score variable and pass/fail using conditional operators */
+    total_score += question_1_correct ? 20 : 0;
+    total_score += question_2_correct ? 20 : 0;
+    total_score += question_3_correct ? 20 : 0;
+    total_score += question_4_correct ? 20 : 0;
+    total_score += question_5_correct ? 20 : 0;
+    const quiz_passed = total_score >= 60;
+    
+    /* display results into results div using conditional operators */
+    results.innerHTML = `
+        <p class="${quiz_passed ? "pass" : "fail"}">${quiz_passed ? "You passed the quiz. Nice!" : "You failed the quiz. Try again!"}</p>
+        <p><b>Score: ${total_score}/100</b></p><hr>
+        <p><b>Q1:</b> ${question_1_correct ? "<span class='correct'>Correct</span>" : "<span class='wrong'>Incorrect</span>"}<br>Answer: Web Hosting</p>
+        <p><b>Q2:</b> ${question_2_correct ? "<span class='correct'>Correct</span>" : "<span class='wrong'>Incorrect</span>"}<br>Answer: Sir Tim Burners-Lee</p>
+        <p><b>Q3:</b> ${question_3_correct ? "<span class='correct'>Correct</span>" : "<span class='wrong'>Incorrect</span>"}<br>Answer: December of 1991</p>
+        <p><b>Q4:</b> ${question_4_correct ? "<span class='correct'>Correct</span>" : "<span class='wrong'>Incorrect</span>"}<br>Answer: User Datagram Protocol</p>
+        <p><b>Q5:</b> ${question_5_correct ? "<span class='correct'>Correct</span>" : "<span class='wrong'>Incorrect</span>"}<br>
+        Answers: Greater efficiency at scanning systems, Better temperature management</p>
+    `;
+}
+/* create function to reset results */
+function resetResults() {
+    document.getElementById("results").innerHTML = "";
+}
+</script>
+</body>
+</html>
