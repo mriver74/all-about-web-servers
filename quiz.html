@@ -122,11 +122,11 @@ function gradeQuiz() {
     results.innerHTML = `
         <p class="${quiz_passed ? "pass" : "fail"}">${quiz_passed ? "You passed the quiz. Nice!" : "You failed the quiz. Try again!"}</p>
         <p><b>Score: ${total_score}/100</b></p><hr>
-        <p><b>Q1:</b> ${question_1_correct ? "<span class='correct'>Correct</span>" : "<span class='wrong'>Incorrect</span>"}<br>Answer: Web Hosting</p>
-        <p><b>Q2:</b> ${question_2_correct ? "<span class='correct'>Correct</span>" : "<span class='wrong'>Incorrect</span>"}<br>Answer: Sir Tim Burners-Lee</p>
-        <p><b>Q3:</b> ${question_3_correct ? "<span class='correct'>Correct</span>" : "<span class='wrong'>Incorrect</span>"}<br>Answer: December of 1991</p>
-        <p><b>Q4:</b> ${question_4_correct ? "<span class='correct'>Correct</span>" : "<span class='wrong'>Incorrect</span>"}<br>Answer: User Datagram Protocol</p>
-        <p><b>Q5:</b> ${question_5_correct ? "<span class='correct'>Correct</span>" : "<span class='wrong'>Incorrect</span>"}<br>
+        <p><b>Question 1:</b> ${question_1_correct ? "<span class='correct'>Correct</span>" : "<span class='wrong'>Incorrect</span>"}<br>Answer: Web Hosting</p>
+        <p><b>Question 2:</b> ${question_2_correct ? "<span class='correct'>Correct</span>" : "<span class='wrong'>Incorrect</span>"}<br>Answer: Sir Tim Burners-Lee</p>
+        <p><b>Question 3:</b> ${question_3_correct ? "<span class='correct'>Correct</span>" : "<span class='wrong'>Incorrect</span>"}<br>Answer: December of 1991</p>
+        <p><b>Question 4:</b> ${question_4_correct ? "<span class='correct'>Correct</span>" : "<span class='wrong'>Incorrect</span>"}<br>Answer: User Datagram Protocol</p>
+        <p><b>Question 5:</b> ${question_5_correct ? "<span class='correct'>Correct</span>" : "<span class='wrong'>Incorrect</span>"}<br>
         Answers: Greater efficiency at scanning systems, Better temperature management</p>
     `;
 }
